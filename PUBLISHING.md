@@ -11,8 +11,9 @@ packed artifact.
    clean.
 3. Run `npm run artifact:prepare` once. The command reruns the complete
    `npm run verify` gate, packs without lifecycle scripts, creates checksums,
-   inventory, license metadata, and a production SBOM from an isolated install,
-   then atomically renames the complete staging directory.
+   inventory, license metadata, and a production SBOM from an isolated install.
+   It packs a committed-source staging tree whose regular files are normalized
+   and asserted as mode `0644`, then atomically renames the complete directory.
 4. Confirm the tarball matches the artifact built by CI from the recorded
    source commit and that the version tag is `stackline-v<version>`.
 5. Publish `./release-candidate/stackline-fstream-<version>.tgz` to Verdaccio,

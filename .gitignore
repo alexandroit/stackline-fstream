@@ -4,6 +4,7 @@ dist/
 node_modules/
 release-candidate/
 .release-candidate-staging-*/
+rejected-candidates/
 *.tgz
 *.log
 .DS_Store

@@ -3,7 +3,9 @@ import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import {
   access,
+  chmod,
   copyFile,
+  mkdir,
   mkdtemp,
   readFile,
   rename,
@@ -38,11 +40,11 @@ function digest(algorithm, buffer, encoding = 'hex') {
   return createHash(algorithm).update(buffer).digest(encoding)
 }
 
-async function pack(directory) {
+async function pack(directory, cwd = root) {
   const output = run([
     'pack', '--silent', '--json', '--ignore-scripts',
     '--pack-destination', directory
-  ]).trim()
+  ], cwd).trim()
   const jsonStart = output.lastIndexOf('\n[')
   const result = JSON.parse(jsonStart === -1 ? output : output.slice(jsonStart + 1))
   assert.equal(result.length, 1)
@@ -76,7 +78,22 @@ assert(tagsAtHead.includes(expectedTag),
 let staging = await mkdtemp(path.join(root, '.release-candidate-staging-'))
 
 try {
-  const first = await pack(staging)
+  // Git creates non-executable files through the checkout umask, and npm pack
+  // preserves those read bits. Copy only committed source into a normalized
+  // staging tree so a restrictive builder umask cannot ship mode 0600 files.
+  const sourceStaging = await mkdtemp(path.join(staging, '.source-'))
+  const trackedFiles = command('git', ['ls-files', '-z']).split('\0').filter(Boolean)
+  for (const file of trackedFiles) {
+    const target = path.join(sourceStaging, file)
+    await mkdir(path.dirname(target), { recursive: true })
+    await copyFile(path.join(root, file), target)
+    await chmod(target, 0o644)
+  }
+
+  const first = await pack(staging, sourceStaging)
+  assert(first.details.files.every(({ mode }) => mode === 0o644),
+    'every shipped regular file must have mode 0644')
+  await rm(sourceStaging, { force: true, recursive: true })
   const sha1 = digest('sha1', first.bytes)
   const sha256 = digest('sha256', first.bytes)
   const sha512 = digest('sha512', first.bytes)
@@ -96,6 +113,7 @@ try {
     packedSize: first.details.size,
     unpackedSize: first.details.unpackedSize,
     entryCount: first.details.entryCount,
+    modePolicy: 'all shipped regular files are 0644',
     sourceCommit: command('git', ['rev-parse', 'HEAD']),
     builder: {
       node: process.version,

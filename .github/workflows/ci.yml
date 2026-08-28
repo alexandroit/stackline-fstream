@@ -26,6 +26,8 @@ jobs:
         with:
           node-version: 24
           cache: npm
+      - run: npm install --global npm@10.8.2
+      - run: npm --version
       - run: npm ci
       - run: npm run verify
 
@@ -39,6 +41,8 @@ jobs:
         with:
           node-version: 24
           cache: npm
+      - run: npm install --global npm@10.8.2
+      - run: npm --version
       - run: npm ci
       - run: npm run clean
       - run: npm run build

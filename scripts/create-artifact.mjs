@@ -64,6 +64,11 @@ execFileSync(npm, ['run', 'verify'], {
 })
 assert.equal(command('git', ['status', '--porcelain', '--untracked-files=normal']), '',
   'release source must be committed and the worktree must be clean')
+const packageJson = JSON.parse(await readFile(path.join(root, 'package.json'), 'utf8'))
+const expectedTag = `stackline-v${packageJson.version}`
+const tagsAtHead = command('git', ['tag', '--points-at', 'HEAD']).split('\n')
+assert(tagsAtHead.includes(expectedTag),
+  `${expectedTag} must point at the frozen source commit`)
 
 // Build every release asset beside the final location, then atomically rename
 // the complete directory. A failed preparation cannot leave a partial final

@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "module": "node16",
+    "moduleResolution": "node16",
+    "lib": ["es2022", "es2021.intl"],
+    "noEmit": true,
+    "strict": true,
+    "target": "es2019",
+    "types": []
+  },
+  "files": ["commonjs.ts"]
+}

@@ -1,0 +1,144 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ['stackline-v*']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Tests, types, coverage, and package quality
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run verify
+
+  package:
+    name: Packed production artifact
+    needs: quality
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run clean
+      - run: npm run build
+      - run: mkdir artifact
+      - run: npm pack --ignore-scripts --pack-destination artifact
+      - run: sha512sum artifact/*.tgz > artifact/SHA512SUMS
+      - run: mkdir sbom-consumer
+      - run: npm init --yes
+        working-directory: sbom-consumer
+      - run: npm install --ignore-scripts --omit=dev --no-audit --no-fund ../artifact/*.tgz
+        working-directory: sbom-consumer
+      - run: npm sbom --omit=dev --sbom-format=cyclonedx > ../artifact/sbom.cdx.json
+        working-directory: sbom-consumer
+      - name: Verify the production SBOM dependency edge
+        run: >-
+          node -e "const s=require('./artifact/sbom.cdx.json');
+          const c=[s.metadata.component,...s.components];
+          const r=c.find(x=>x.name==='@stackline/fstream'&&x.version==='1.0.0');
+          const g=c.find(x=>x.name==='graceful-fs'&&x.version==='4.2.11');
+          const e=s.dependencies.find(x=>r&&x.ref===r['bom-ref']);
+          if(!r||!g||!e||!e.dependsOn.includes(g['bom-ref']))process.exit(1)"
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: npm-package
+          path: artifact/
+          if-no-files-found: error
+          retention-days: 14
+
+  exact-old-node:
+    name: Exact Node.js 14.15.1 packed production artifact
+    needs: package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 14.15.1
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: npm-package
+          path: artifact
+      - run: mkdir consumer
+      - run: npm init --yes
+        working-directory: consumer
+      - run: npm install --production --ignore-scripts --no-audit --no-fund ../artifact/*.tgz
+        working-directory: consumer
+      - run: npm ls --production --depth=1
+        working-directory: consumer
+      - name: Exercise CommonJS, deep exports, and the CJS example
+        run: >-
+          node -e "var api=require('@stackline/fstream');
+          var Reader=require('@stackline/fstream/lib/reader.js');
+          if (Reader !== api.Reader) throw new Error('deep Reader identity mismatch');"
+        working-directory: consumer
+      - run: node node_modules/@stackline/fstream/examples/commonjs.cjs node_modules/@stackline/fstream/LICENSE
+        working-directory: consumer
+      - run: node node_modules/@stackline/fstream/examples/esm.mjs node_modules/@stackline/fstream/LICENSE
+        working-directory: consumer
+
+  supported-runtime:
+    name: Node.js ${{ matrix.node }} packed production artifact
+    needs: package
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [16.20.2, 18.20.8, 20.20.0, 22, 24]
+    steps:
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: ${{ matrix.node }}
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: npm-package
+          path: artifact
+      - run: mkdir consumer
+      - run: npm init --yes
+        working-directory: consumer
+      - run: npm install --omit=dev --ignore-scripts --no-audit --no-fund ../artifact/*.tgz
+        working-directory: consumer
+      - run: node node_modules/@stackline/fstream/examples/commonjs.cjs node_modules/@stackline/fstream/LICENSE
+        working-directory: consumer
+      - run: node node_modules/@stackline/fstream/examples/esm.mjs node_modules/@stackline/fstream/LICENSE
+        working-directory: consumer
+
+  platform:
+    name: ${{ matrix.os }} filesystem behavior
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 20.20.0
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm run test:upstream
+      - run: npm run test:regressions
+      - run: npm run test:malformed
+      - run: npm run test:esm

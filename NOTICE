@@ -1,0 +1,14 @@
+@stackline/fstream is an independent maintained continuation of fstream. It is
+not affiliated with or endorsed by Isaac Z. Schlueter, the npm organization,
+or the upstream project.
+
+The implementation and compatibility tests derive from the ISC-licensed
+fstream project:
+
+Copyright (c) Isaac Z. Schlueter and Contributors
+
+Stackline maintenance, packaging, declarations, documentation, and additional
+tests are Copyright (c) 2026 Stackline Maintainers.
+
+See LICENSE for the complete ISC terms and THIRD_PARTY_LICENSES.md for the
+production dependency graph.

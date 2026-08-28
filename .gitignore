@@ -1,0 +1,11 @@
+artifact/
+coverage/
+dist/
+node_modules/
+release-candidate/
+.release-candidate-staging-*/
+*.tgz
+*.log
+.DS_Store
+.eslintcache
+decision.json

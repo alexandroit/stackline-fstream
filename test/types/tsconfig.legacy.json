@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "noEmit": true,
+    "strict": true,
+    "target": "es5",
+    "types": []
+  },
+  "files": ["legacy.ts"]
+}

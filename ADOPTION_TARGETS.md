@@ -1,9 +1,9 @@
 # Adoption Targets
 
-This is a pre-contact compatibility record, not evidence of consumer approval.
-No contact is authorized until `@stackline/fstream@1.0.0` is publicly verified.
+This is a dated compatibility and contact record, not evidence of consumer
+approval. `@stackline/fstream@1.0.0` is publicly verified.
 
-## Qualified migration pull request target
+## Pull request lane — NO_QUALIFIED_TARGET
 
 `webos-tools/cli` directly declares exact `fstream@1.0.12` and actively calls
 Reader and Writer in `lib/package.js` on its normal IPK packaging path. Its
@@ -11,10 +11,19 @@ Node.js `>=14.15.1` contract matches the replacement. The minimal proposal is
 the exact historical-key alias `fstream: npm:@stackline/fstream@1.0.0`, its
 shrinkwrap update, and the repository-owned SBOM/license inventory updates.
 Baseline install passed; its focused package suite had 61 passes and three
-existing Linux exclusions. Full tests and lint retain substantial existing
-environment/finding baselines that must not worsen.
+existing Linux exclusions. However, the written contribution policy requires
+a `develop` base, every unit test passing on a configured device/emulator, and
+zero ESLint findings. The clean default-branch baseline has 68 full-suite
+environment failures and substantial existing lint findings. A compliant PR
+cannot be demonstrated without maintainer direction, so no PR was opened.
 
-## Qualified maintainer-decision issue target
+Fresh alternatives were also rejected without contact: check-file-dependencies
+contains fstream only in frozen parser fixtures; packed-updater contains only a
+commented import; Bower and sdc-manta would suffer incompatible Node-floor
+contractions; SAP/node-hdb requires issue-first direction and HANA-backed
+example validation. One qualified PR remains adoption debt.
+
+## Maintainer-decision issue — OPEN
 
 `SAP/node-hdb` directly declares `fstream` for documented filesystem LOB
 examples, including Reader and Writer calls. Its active Node.js 18+ and Node
@@ -24,6 +33,12 @@ alias, native filesystem streams, or removal of the legacy examples. Baseline
 install and 586/586 automated tests passed; HANA-backed examples require an
 external service and cannot be claimed as locally executed.
 
-The pull request and issue target different repositories. Live GitHub
-deduplication, current policy checks, target mutation tests, and maintainership
-disclosure remain mandatory immediately before either public write.
+The personalized, non-security maintenance question is open at
+<https://github.com/SAP/node-hdb/issues/320>. It identifies the exact manifest
+and example paths, offers alias/native/removal alternatives, records the clean
+baseline and HANA limitation, and discloses Stackline maintainership.
+
+Because no PR passed, the different-repository check is not yet applicable.
+Live GitHub deduplication found no prior Stackline contact or competing
+migration immediately before the issue. Do not send an unsolicited follow-up;
+reply only to a concrete maintainer question with evidence.

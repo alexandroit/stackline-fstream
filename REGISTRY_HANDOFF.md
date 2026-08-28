@@ -13,10 +13,22 @@
 - runtime dependency: exact `graceful-fs@4.2.11`
 - optional type peer: `@types/node>=14.18.0`; the TypeScript 3.9 gate uses
   exact `@types/node@14.18.63`
-- publication status: BUILDING; do not recommend migration until the exact
-  candidate has passed both registries and the public release gates
+- publication status: PUBLISHED on 2026-08-28; Verdaccio and official npm
+  serve the exact verified artifact
+- npm: <https://www.npmjs.com/package/@stackline/fstream>
+- source: <https://github.com/alexandroit/stackline-fstream>
+- immutable release:
+  <https://github.com/alexandroit/stackline-fstream/releases/tag/stackline-v1.0.0>
+- documentation: <https://alexandro.net/docs/vanilla/fstream/>
+- source/tag commit: `2b1bfc65c42bc19c1884ca85a50d7a9dab7d25f5`
+- artifact SHA-1: `8fb2cbcf88fc0e6e7a5f7722674cbf2f7f5c320f`
+- artifact SHA-256:
+  `3e0fd31a8e7ea9351fcee321a1152aad48f8b4601d0c79d31b037163036ac4fd`
+- artifact integrity:
+  `sha512-i+Fk0TPLFysRmsMuoUzOG6WiZM+kWJBenJlPX8NtoFK2IwMUqhSkgtGp6/RI1GNMIggzVGEBhC4Q3aDg6my5nQ==`
 
 Do not claim a browser contract, compatibility below Node.js 14.15.1, or a
 vulnerability in a clean `fstream@1.0.12` install. Consumers using `follow`,
 hard links, event timing, post-close cleanup, proxy drain, or `collect` replay
 must exercise the documented bounded corrections against the exact candidate.
+Use the published version, not a moving branch or locally rebuilt tarball.

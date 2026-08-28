@@ -3,7 +3,7 @@ schema: stackline-project-memory-v1
 package: fstream
 target: "@stackline/fstream"
 version: 1.0.0
-state: BUILDING
+state: PUBLISHED
 updated: 2026-08-28
 ---
 
@@ -26,7 +26,7 @@ The bounded corrections and migration risks are recorded in
 [COMPATIBILITY_CONTRACT.md](./COMPATIBILITY_CONTRACT.md) and
 [MIGRATION.md](./MIGRATION.md).
 
-## Current gate
+## Published gate
 
 The complete local gate passed on 2026-08-28: upstream, differential,
 regression, malformed-input, stress, ESM, TypeScript 3.9/current, packed
@@ -36,5 +36,24 @@ across 127 assertions.
 Runtime checks passed on Node.js 14.15.1, 16.20.2, 18.20.8, 20.20.2, 22.22.0,
 and 24.7.0.
 
-Artifact and publication details remain intentionally absent until the
-one-time immutable preparation and registry verification complete.
+The exact source/tag commit is
+`2b1bfc65c42bc19c1884ca85a50d7a9dab7d25f5`. Main CI run
+`33144611174`, corrected-tag CI run `33144616977`, and CodeQL run
+`33144611169` passed. The immutable 87-file artifact is 30,704 bytes with
+SHA-1 `8fb2cbcf88fc0e6e7a5f7722674cbf2f7f5c320f` and SHA-256
+`3e0fd31a8e7ea9351fcee321a1152aad48f8b4601d0c79d31b037163036ac4fd`.
+All shipped regular files are mode `0644`.
+
+Verdaccio and official npm serve byte-identical copies of that artifact.
+Clean public scoped and historical-key alias consumers pass. GitHub release
+`stackline-v1.0.0` is immutable and contains the exact tarball, checksums,
+inventory, license record, release notes, manifest, and CycloneDX SBOM.
+Production documentation and runnable examples are published at
+<https://alexandro.net/docs/vanilla/fstream/> from final documentation commit
+`b1c7cc62cf10a97e9e5af05daad6105921acaff6`; its final CI and CodeQL runs are
+green.
+
+The adoption lane opened the policy-first maintainer issue
+<https://github.com/SAP/node-hdb/issues/320>. No pull-request candidate passed
+the complete direct-use, runtime, test, and repository-policy gate, so one
+qualified PR remains adoption debt; no weaker public contact was made.

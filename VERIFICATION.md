@@ -26,8 +26,32 @@ Observed on 2026-08-28 in the package workspace.
 - The installed production graph and license gate contain only exact
   `graceful-fs@4.2.11` under the package root.
 
-## Pre-publication holds
+## Publication and external verification
 
-The immutable artifact, registry byte comparisons, GitHub release, production
-documentation, and downstream adoption contacts are recorded here only after
-their live gates complete. Never infer publication from this local record.
+- Main CI `33144611174`, corrected-tag CI `33144616977`, and CodeQL
+  `33144611169` passed at commit
+  `2b1bfc65c42bc19c1884ca85a50d7a9dab7d25f5`.
+- The normalized local candidate and clean CI artifact are byte-identical:
+  SHA-256
+  `3e0fd31a8e7ea9351fcee321a1152aad48f8b4601d0c79d31b037163036ac4fd`.
+  Every one of 87 reported tar entries is mode `0644`.
+- Verdaccio accepted first; its fetched tarball, scoped consumer, and
+  historical-key npm-alias consumer passed.
+- Official npm accepted the same bytes once. A short public-read replication
+  delay returned E404 after the successful PUT; no republish was attempted.
+  Public metadata, direct tarball bytes, clean scoped install, and clean alias
+  install subsequently passed at 2026-08-28T05:31:03Z.
+- The GitHub release contains nine exact assets and reports `immutable: true`.
+  Its downloaded tarball is byte-identical to the registry candidate.
+- The CycloneDX SBOM was generated from an isolated production install and
+  records `@stackline/fstream@1.0.0 -> graceful-fs@4.2.11`.
+- Production package docs, catalog/search/robots, examples, and aggregate
+  sitemaps were published from `stackline-open-source` commits
+  `22808f7866346f9fdab1ce59d2657f2ef934246e` and
+  `474943569dacc29bf196fdfd9feb25be24074998`, with final release record commit
+  `b1c7cc62cf10a97e9e5af05daad6105921acaff6`. Final CI run `33145877462` and
+  CodeQL run `33145877284` pass. Cloudflare-visible checks returned 200 with
+  expected MIME for all 24 routes; both aggregate sitemaps contain 11 fstream
+  routes.
+- Adoption issue <https://github.com/SAP/node-hdb/issues/320> is open. The PR
+  lane recorded `NO_QUALIFIED_TARGET`; one qualified PR remains debt.

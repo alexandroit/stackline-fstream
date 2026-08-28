@@ -30,8 +30,9 @@ The bounded corrections and migration risks are recorded in
 
 The complete local gate passed on 2026-08-28: upstream, differential,
 regression, malformed-input, stress, ESM, TypeScript 3.9/current, packed
-consumer, package-quality, license, audit, and signature checks. Coverage is
-87.40% statements/lines, 75% branches, and 89% functions across 119 assertions.
+consumer, package-quality, license, audit, and signature checks. The Node.js 24
+coverage gate is 87.74% statements/lines, 75.69% branches, and 90% functions
+across 127 assertions.
 Runtime checks passed on Node.js 14.15.1, 16.20.2, 18.20.8, 20.20.2, 22.22.0,
 and 24.7.0.
 

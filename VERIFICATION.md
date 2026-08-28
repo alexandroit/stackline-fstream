@@ -8,9 +8,10 @@ Observed on 2026-08-28 in the package workspace.
   four-suite/24-assertion baseline passed.
 - Differential Reader, Writer, event, export, alias, and deep-entry checks
   passed.
-- 65 focused regression, 21 malformed-input, and 10 stress assertions passed.
-- Combined coverage passed 119/119 assertions at 87.40% statements/lines,
-  75% branches, and 89% functions.
+- 65 focused regression, 29 malformed-input/lifecycle, and 10 stress assertions
+  passed.
+- Combined Node.js 24 coverage passed 127/127 assertions at 87.74%
+  statements/lines, 75.69% branches, and 90% functions.
 - ESM namespace/identity and all public deep facades passed.
 - TypeScript 3.9 and current TypeScript CommonJS/ESM consumers passed with the
   explicitly installed Node declaration peer.

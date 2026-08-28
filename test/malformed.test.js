@@ -96,6 +96,37 @@ test('warn events carry stable path, type, class, and code context', function (t
   abstract.warn('example warning', 'EXAMPLE')
 })
 
+test('late ready listeners and abstract lifecycle events retain context', function (t) {
+  t.plan(8)
+  var abstract = new fstream.Abstract()
+  abstract.path = '/visible/example'
+  abstract._path = '/unc/example'
+  abstract.type = 'SymbolicLink'
+  abstract.linkpath = '/target/example'
+  abstract.ready = true
+
+  abstract.on('ready', function () {
+    t.pass('a late ready listener is scheduled')
+  })
+  abstract.on('abort', function () {
+    t.pass('abort remains observable')
+  })
+  abstract.on('info', function (message, code) {
+    t.equal(message, 'detail')
+    t.equal(code, 'DETAIL')
+  })
+  abstract.on('error', function (error) {
+    t.equal(error.code, 'EXAMPLE')
+    t.equal(error.fstream_unc_path, abstract._path)
+    t.equal(error.fstream_linkpath, abstract.linkpath)
+    t.equal(error.fstream_class, 'Abstract')
+  })
+
+  abstract.abort()
+  abstract.info('detail', 'DETAIL')
+  abstract.error('example error', 'EXAMPLE')
+})
+
 test('hardlinks:false reads every linked path as file content', function (t) {
   if (process.platform === 'win32') {
     t.pass('hard-link option coverage runs on Unix')

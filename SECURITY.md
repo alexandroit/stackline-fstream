@@ -17,9 +17,13 @@ installation.
 
 ## Production dependency statement
 
-The only production dependency is exact-pinned `graceful-fs@4.2.11`. The
-release gate checks the production graph, its license, and npm audit results.
-The old `inherits`, `mkdirp`, and `rimraf` production paths are not present.
+The only production dependency is exact-pinned
+`graceful-fs@npm:@stackline/graceful-fs@1.0.0`. The npm alias preserves the
+historical runtime key while resolving to the maintained, dependency-free ISC
+package. The release gate checks separate scoped and historical-key installs,
+the complete production graph, licenses, warning output, tree validity and npm
+audit results. The old `inherits`, `mkdirp`, and `rimraf` production paths are
+not present.
 
 The upstream advisory
 [GHSA-xf7w-r453-m56c](https://github.com/advisories/GHSA-xf7w-r453-m56c)

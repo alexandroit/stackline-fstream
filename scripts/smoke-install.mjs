@@ -143,7 +143,14 @@ fstream.collect(reader)
   const installed = JSON.parse(await readFile(path.join(
     consumer, 'node_modules', '@stackline', 'fstream', 'package.json'
   ), 'utf8'))
-  assert.deepEqual(installed.dependencies, { 'graceful-fs': '4.2.11' })
+  assert.deepEqual(installed.dependencies, {
+    'graceful-fs': 'npm:@stackline/graceful-fs@1.0.0'
+  })
+  const graceful = JSON.parse(await readFile(path.join(
+    consumer, 'node_modules', 'graceful-fs', 'package.json'
+  ), 'utf8'))
+  assert.equal(graceful.name, '@stackline/graceful-fs')
+  assert.equal(graceful.version, '1.0.0')
   const tree = JSON.parse(run(npm, [
     'ls', '--omit=dev', '--all', '--json'
   ], { cwd: consumer }))

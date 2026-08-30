@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.0.1 - 2026-08-30
+
+- Replace the stale direct `graceful-fs@4.2.11` edge with the exact
+  `graceful-fs@npm:@stackline/graceful-fs@1.0.0` compatibility alias.
+- Preserve the historical `require('graceful-fs')` resolution used internally
+  while shipping a maintained, dependency-free provider.
+- Gate direct scoped and historical-key packed installs on zero npm warnings,
+  a valid complete production tree, zero production audit findings, exact
+  installed identities, license inventory and SBOM dependency edges.
+
 ## 1.0.0 - 2026-08-28
 
 - Preserve the `fstream@1.0.12` CommonJS namespace, callable/newable factories,

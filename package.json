@@ -1,6 +1,6 @@
 {
   "name": "@stackline/fstream",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Compatibility-first filesystem object streams with maintained packaging and first-party types",
   "type": "commonjs",
   "main": "./fstream.js",
@@ -262,6 +262,7 @@
     "test": "npm run test:upstream && npm run test:differential && npm run test:regressions && npm run test:malformed && npm run test:stress && npm run test:esm && npm run test:types && npm run test:runtime",
     "test:coverage": "c8 --all --include=fstream.js --include=lib/*.js --check-coverage --lines 85 --functions 85 --branches 75 tape test/upstream.test.js test/regressions.test.js test/malformed.test.js test/stress.test.js",
     "test:smoke": "node scripts/smoke-install.mjs",
+    "test:closure": "node scripts/check-production-closure.mjs",
     "check:package": "publint && attw --pack .",
     "check:release-metadata": "node scripts/check-release-metadata.mjs",
     "check:licenses": "node scripts/check-licenses.mjs",
@@ -270,7 +271,7 @@
     "audit:dependencies": "npm audit --omit=dev --audit-level=low",
     "audit:all": "npm audit --audit-level=low",
     "audit:signatures": "npm audit signatures",
-    "verify": "npm run clean && npm run lint && npm run build && npm test && npm run test:coverage && npm run test:smoke && npm run check:package && npm run check:release-metadata && npm run pack:check && npm run check:licenses && npm run audit:dependencies && npm run audit:all && npm run audit:signatures",
+    "verify": "npm run clean && npm run lint && npm run build && npm test && npm run test:coverage && npm run test:smoke && npm run test:closure && npm run check:package && npm run check:release-metadata && npm run pack:check && npm run check:licenses && npm run audit:dependencies && npm run audit:all && npm run audit:signatures",
     "prepack": "npm run build"
   },
   "repository": {
@@ -302,7 +303,7 @@
     "access": "public"
   },
   "dependencies": {
-    "graceful-fs": "4.2.11"
+    "graceful-fs": "npm:@stackline/graceful-fs@1.0.0"
   },
   "peerDependencies": {
     "@types/node": ">=14.18.0"

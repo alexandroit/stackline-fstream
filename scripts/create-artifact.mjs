@@ -137,7 +137,7 @@ try {
   const licenses = {
     package: { name: '@stackline/fstream', license: 'ISC', file: 'LICENSE' },
     productionDependencies: [
-      { name: 'graceful-fs', version: '4.2.11', license: 'ISC' }
+      { name: '@stackline/graceful-fs', version: '1.0.0', license: 'ISC' }
     ],
     notices: ['NOTICE', 'THIRD_PARTY_LICENSES.md']
   }
@@ -168,11 +168,11 @@ try {
     ...(parsedSbom.components || [])
   ].filter(Boolean)
   const rootComponent = components.find(({ name, version }) =>
-    name === '@stackline/fstream' && version === '1.0.0')
+    name === '@stackline/fstream' && version === '1.0.1')
   const gracefulComponent = components.find(({ name, version }) =>
-    name === 'graceful-fs' && version === '4.2.11')
-  assert(rootComponent, 'SBOM must contain @stackline/fstream@1.0.0')
-  assert(gracefulComponent, 'SBOM must contain graceful-fs@4.2.11')
+    name === '@stackline/graceful-fs' && version === '1.0.0')
+  assert(rootComponent, 'SBOM must contain @stackline/fstream@1.0.1')
+  assert(gracefulComponent, 'SBOM must contain @stackline/graceful-fs@1.0.0')
   const rootEdge = (parsedSbom.dependencies || []).find(({ ref }) =>
     ref === rootComponent['bom-ref'])
   assert(rootEdge && rootEdge.dependsOn.includes(gracefulComponent['bom-ref']),

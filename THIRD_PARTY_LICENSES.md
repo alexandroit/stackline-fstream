@@ -16,9 +16,10 @@ tests used as development evidence are excluded from the npm artifact.
 
 | Package | Version | License | Purpose | Source |
 | --- | --- | --- | --- | --- |
-| `graceful-fs` | 4.2.11 | ISC | Filesystem compatibility and graceful descriptor handling | <https://github.com/isaacs/node-graceful-fs> |
+| `@stackline/graceful-fs` | 1.0.0 | ISC | Filesystem compatibility and graceful descriptor handling, installed under the historical `graceful-fs` key | <https://github.com/alexandroit/stackline-graceful-fs> |
 
-`graceful-fs` installs its complete license file with its package:
+`@stackline/graceful-fs` preserves the upstream ISC attribution and installs
+its complete license file with the package:
 
 > Copyright (c) 2011-2022 Isaac Z. Schlueter, Ben Noordhuis, and Contributors
 

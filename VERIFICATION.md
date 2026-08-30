@@ -1,8 +1,20 @@
 # Verification
 
-Observed on 2026-08-28 in the package workspace.
+Observed through 2026-08-30 in the package workspace.
 
-## Passed local gates
+## 1.0.1 dependency remediation
+
+- The production manifest now preserves the `graceful-fs` import key through
+  the exact `npm:@stackline/graceful-fs@1.0.0` alias.
+- The new closure gate uses separate fresh consumers for direct scoped and
+  historical-key parent installs and checks warning output, full production
+  trees, production audits, runtime loading, lockfiles and exact child identity.
+- License and SBOM gates require the maintained child package and its preserved
+  ISC attribution.
+- Final local, hosted, Verdaccio and official-registry evidence remains pending
+  until the child release is available from the target registry.
+
+## Retained 1.0.0 evidence
 
 - 23 adapted upstream compatibility assertions and the independent upstream
   four-suite/24-assertion baseline passed.
@@ -23,8 +35,9 @@ Observed on 2026-08-28 in the package workspace.
   compatibility gate. Are the Types Wrong reported no problems.
 - Production and complete audits found zero known vulnerabilities. All 305
   installed registry packages had verified signatures; 24 had attestations.
-- The installed production graph and license gate contain only exact
-  `graceful-fs@4.2.11` under the package root.
+- The former installed production graph and license gate contained only exact
+  `graceful-fs@4.2.11` under the package root. That edge triggered the 1.0.1
+  remediation and is not accepted for a new release.
 
 ## Publication and external verification
 
@@ -43,8 +56,8 @@ Observed on 2026-08-28 in the package workspace.
   install subsequently passed at 2026-08-28T05:31:03Z.
 - The GitHub release contains nine exact assets and reports `immutable: true`.
   Its downloaded tarball is byte-identical to the registry candidate.
-- The CycloneDX SBOM was generated from an isolated production install and
-  records `@stackline/fstream@1.0.0 -> graceful-fs@4.2.11`.
+- The 1.0.0 CycloneDX SBOM was generated from an isolated production install
+  and records `@stackline/fstream@1.0.0 -> graceful-fs@4.2.11`.
 - Production package docs, catalog/search/robots, examples, and aggregate
   sitemaps were published from `stackline-open-source` commits
   `22808f7866346f9fdab1ce59d2657f2ef934246e` and

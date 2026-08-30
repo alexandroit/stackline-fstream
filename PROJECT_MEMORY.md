@@ -2,9 +2,9 @@
 schema: stackline-project-memory-v1
 package: fstream
 target: "@stackline/fstream"
-version: 1.0.0
-state: PUBLISHED
-updated: 2026-08-28
+version: 1.0.1
+state: BUILDING
+updated: 2026-08-30
 ---
 
 # Project Memory
@@ -26,7 +26,16 @@ The bounded corrections and migration risks are recorded in
 [COMPATIBILITY_CONTRACT.md](./COMPATIBILITY_CONTRACT.md) and
 [MIGRATION.md](./MIGRATION.md).
 
-## Published gate
+## Active dependency remediation
+
+Version 1.0.1 replaces the stale `graceful-fs@4.2.11` production edge with
+`graceful-fs@npm:@stackline/graceful-fs@1.0.0`. The historical dependency key
+and runtime API remain unchanged. Release is blocked until the child is
+published from its exact green artifact and the parent passes separate clean
+direct and legacy-key installs with no warnings, a valid full tree, zero audit
+findings, exact identity, license and SBOM checks.
+
+## Retained 1.0.0 release evidence
 
 The complete local gate passed on 2026-08-28: upstream, differential,
 regression, malformed-input, stress, ESM, TypeScript 3.9/current, packed

@@ -40,5 +40,5 @@ baseline and HANA limitation, and discloses Stackline maintainership.
 
 Because no PR passed, the different-repository check is not yet applicable.
 Live GitHub deduplication found no prior Stackline contact or competing
-migration immediately before the issue. Do not send an unsolicited follow-up;
-reply only to a concrete maintainer question with evidence.
+migration immediately before the issue. Record incoming maintainer messages for
+owner review without replying, acknowledging or reacting.

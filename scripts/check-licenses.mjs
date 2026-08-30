@@ -15,12 +15,15 @@ const gracefulLicense = await readFile(path.join(
   root, 'node_modules', 'graceful-fs', 'LICENSE'
 ), 'utf8')
 
-assert.deepEqual(packageJson.dependencies, { 'graceful-fs': '4.2.11' })
-assert.equal(gracefulPackage.version, '4.2.11')
+assert.deepEqual(packageJson.dependencies, {
+  'graceful-fs': 'npm:@stackline/graceful-fs@1.0.0'
+})
+assert.equal(gracefulPackage.name, '@stackline/graceful-fs')
+assert.equal(gracefulPackage.version, '1.0.0')
 assert.equal(gracefulPackage.license, 'ISC')
 assert.match(upstreamLicense, /Isaac Z\. Schlueter and Contributors/)
 assert.match(gracefulLicense, /Isaac Z\. Schlueter, Ben Noordhuis/)
-assert.match(notices, /`graceful-fs`\s*\|\s*4\.2\.11/)
+assert.match(notices, /`@stackline\/graceful-fs`\s*\|\s*1\.0\.0/)
 assert.match(notices, /ISC/)
 
 const productionPackages = Object.entries(lock.packages)
@@ -28,4 +31,4 @@ const productionPackages = Object.entries(lock.packages)
   .map(([location]) => location)
 assert.deepEqual(productionPackages, ['node_modules/graceful-fs'])
 
-console.log('Production license inventory passed: fstream ISC; graceful-fs@4.2.11 ISC.')
+console.log('Production license inventory passed: fstream ISC; @stackline/graceful-fs@1.0.0 ISC.')

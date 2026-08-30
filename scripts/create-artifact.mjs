@@ -167,10 +167,12 @@ try {
     parsedSbom.metadata && parsedSbom.metadata.component,
     ...(parsedSbom.components || [])
   ].filter(Boolean)
-  const rootComponent = components.find(({ name, version }) =>
-    name === '@stackline/fstream' && version === '1.0.1')
-  const gracefulComponent = components.find(({ name, version }) =>
-    name === '@stackline/graceful-fs' && version === '1.0.0')
+  // npm 10 reports an aliased component under the dependency key while npm 11
+  // reports the published package name. CycloneDX bom-ref is stable in both.
+  const rootComponent = components.find((component) =>
+    component['bom-ref'] === '@stackline/fstream@1.0.1')
+  const gracefulComponent = components.find((component) =>
+    component['bom-ref'] === '@stackline/graceful-fs@1.0.0')
   assert(rootComponent, 'SBOM must contain @stackline/fstream@1.0.1')
   assert(gracefulComponent, 'SBOM must contain @stackline/graceful-fs@1.0.0')
   const rootEdge = (parsedSbom.dependencies || []).find(({ ref }) =>

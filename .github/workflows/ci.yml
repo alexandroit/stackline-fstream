@@ -64,8 +64,8 @@ jobs:
         run: >-
           node -e "const s=require('./artifact/sbom.cdx.json');
           const c=[s.metadata.component,...s.components];
-          const r=c.find(x=>x.name==='@stackline/fstream'&&x.version==='1.0.1');
-          const g=c.find(x=>x.name==='@stackline/graceful-fs'&&x.version==='1.0.0');
+          const r=c.find(x=>x['bom-ref']==='@stackline/fstream@1.0.1');
+          const g=c.find(x=>x['bom-ref']==='@stackline/graceful-fs@1.0.0');
           const e=s.dependencies.find(x=>r&&x.ref===r['bom-ref']);
           if(!r||!g||!e||!e.dependsOn.includes(g['bom-ref']))process.exit(1)"
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1

@@ -64,7 +64,7 @@ jobs:
         run: >-
           node -e "const s=require('./artifact/sbom.cdx.json');
           const c=[s.metadata.component,...s.components];
-          const r=c.find(x=>x['bom-ref']==='@stackline/fstream@1.0.1');
+          const r=c.find(x=>x['bom-ref']==='@stackline/fstream@1.0.2');
           const g=c.find(x=>x['bom-ref']==='@stackline/graceful-fs@1.0.0');
           const e=s.dependencies.find(x=>r&&x.ref===r['bom-ref']);
           if(!r||!g||!e||!e.dependsOn.includes(g['bom-ref']))process.exit(1)"

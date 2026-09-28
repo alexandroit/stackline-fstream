@@ -1,6 +1,6 @@
 {
   "name": "@stackline/fstream",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Compatibility-first filesystem object streams with maintained packaging and first-party types",
   "type": "commonjs",
   "main": "./fstream.js",
@@ -58,169 +58,281 @@
       "default": "./index.js"
     },
     "./lib/abstract": {
-      "types": { "import": "./esm/lib/abstract.d.mts", "require": "./lib/abstract.d.ts", "default": "./lib/abstract.d.ts" },
+      "types": {
+        "import": "./esm/lib/abstract.d.mts",
+        "require": "./lib/abstract.d.ts",
+        "default": "./lib/abstract.d.ts"
+      },
       "import": "./esm/lib/abstract.mjs",
       "require": "./lib/abstract.js",
       "default": "./lib/abstract.js"
     },
     "./lib/abstract.js": {
-      "types": { "import": "./esm/lib/abstract.d.mts", "require": "./lib/abstract.d.ts", "default": "./lib/abstract.d.ts" },
+      "types": {
+        "import": "./esm/lib/abstract.d.mts",
+        "require": "./lib/abstract.d.ts",
+        "default": "./lib/abstract.d.ts"
+      },
       "import": "./esm/lib/abstract.mjs",
       "require": "./lib/abstract.js",
       "default": "./lib/abstract.js"
     },
     "./lib/collect": {
-      "types": { "import": "./esm/lib/collect.d.mts", "require": "./lib/collect.d.ts", "default": "./lib/collect.d.ts" },
+      "types": {
+        "import": "./esm/lib/collect.d.mts",
+        "require": "./lib/collect.d.ts",
+        "default": "./lib/collect.d.ts"
+      },
       "import": "./esm/lib/collect.mjs",
       "require": "./lib/collect.js",
       "default": "./lib/collect.js"
     },
     "./lib/collect.js": {
-      "types": { "import": "./esm/lib/collect.d.mts", "require": "./lib/collect.d.ts", "default": "./lib/collect.d.ts" },
+      "types": {
+        "import": "./esm/lib/collect.d.mts",
+        "require": "./lib/collect.d.ts",
+        "default": "./lib/collect.d.ts"
+      },
       "import": "./esm/lib/collect.mjs",
       "require": "./lib/collect.js",
       "default": "./lib/collect.js"
     },
     "./lib/dir-reader": {
-      "types": { "import": "./esm/lib/dir-reader.d.mts", "require": "./lib/dir-reader.d.ts", "default": "./lib/dir-reader.d.ts" },
+      "types": {
+        "import": "./esm/lib/dir-reader.d.mts",
+        "require": "./lib/dir-reader.d.ts",
+        "default": "./lib/dir-reader.d.ts"
+      },
       "import": "./esm/lib/dir-reader.mjs",
       "require": "./lib/dir-reader.js",
       "default": "./lib/dir-reader.js"
     },
     "./lib/dir-reader.js": {
-      "types": { "import": "./esm/lib/dir-reader.d.mts", "require": "./lib/dir-reader.d.ts", "default": "./lib/dir-reader.d.ts" },
+      "types": {
+        "import": "./esm/lib/dir-reader.d.mts",
+        "require": "./lib/dir-reader.d.ts",
+        "default": "./lib/dir-reader.d.ts"
+      },
       "import": "./esm/lib/dir-reader.mjs",
       "require": "./lib/dir-reader.js",
       "default": "./lib/dir-reader.js"
     },
     "./lib/dir-writer": {
-      "types": { "import": "./esm/lib/dir-writer.d.mts", "require": "./lib/dir-writer.d.ts", "default": "./lib/dir-writer.d.ts" },
+      "types": {
+        "import": "./esm/lib/dir-writer.d.mts",
+        "require": "./lib/dir-writer.d.ts",
+        "default": "./lib/dir-writer.d.ts"
+      },
       "import": "./esm/lib/dir-writer.mjs",
       "require": "./lib/dir-writer.js",
       "default": "./lib/dir-writer.js"
     },
     "./lib/dir-writer.js": {
-      "types": { "import": "./esm/lib/dir-writer.d.mts", "require": "./lib/dir-writer.d.ts", "default": "./lib/dir-writer.d.ts" },
+      "types": {
+        "import": "./esm/lib/dir-writer.d.mts",
+        "require": "./lib/dir-writer.d.ts",
+        "default": "./lib/dir-writer.d.ts"
+      },
       "import": "./esm/lib/dir-writer.mjs",
       "require": "./lib/dir-writer.js",
       "default": "./lib/dir-writer.js"
     },
     "./lib/file-reader": {
-      "types": { "import": "./esm/lib/file-reader.d.mts", "require": "./lib/file-reader.d.ts", "default": "./lib/file-reader.d.ts" },
+      "types": {
+        "import": "./esm/lib/file-reader.d.mts",
+        "require": "./lib/file-reader.d.ts",
+        "default": "./lib/file-reader.d.ts"
+      },
       "import": "./esm/lib/file-reader.mjs",
       "require": "./lib/file-reader.js",
       "default": "./lib/file-reader.js"
     },
     "./lib/file-reader.js": {
-      "types": { "import": "./esm/lib/file-reader.d.mts", "require": "./lib/file-reader.d.ts", "default": "./lib/file-reader.d.ts" },
+      "types": {
+        "import": "./esm/lib/file-reader.d.mts",
+        "require": "./lib/file-reader.d.ts",
+        "default": "./lib/file-reader.d.ts"
+      },
       "import": "./esm/lib/file-reader.mjs",
       "require": "./lib/file-reader.js",
       "default": "./lib/file-reader.js"
     },
     "./lib/file-writer": {
-      "types": { "import": "./esm/lib/file-writer.d.mts", "require": "./lib/file-writer.d.ts", "default": "./lib/file-writer.d.ts" },
+      "types": {
+        "import": "./esm/lib/file-writer.d.mts",
+        "require": "./lib/file-writer.d.ts",
+        "default": "./lib/file-writer.d.ts"
+      },
       "import": "./esm/lib/file-writer.mjs",
       "require": "./lib/file-writer.js",
       "default": "./lib/file-writer.js"
     },
     "./lib/file-writer.js": {
-      "types": { "import": "./esm/lib/file-writer.d.mts", "require": "./lib/file-writer.d.ts", "default": "./lib/file-writer.d.ts" },
+      "types": {
+        "import": "./esm/lib/file-writer.d.mts",
+        "require": "./lib/file-writer.d.ts",
+        "default": "./lib/file-writer.d.ts"
+      },
       "import": "./esm/lib/file-writer.mjs",
       "require": "./lib/file-writer.js",
       "default": "./lib/file-writer.js"
     },
     "./lib/get-type": {
-      "types": { "import": "./esm/lib/get-type.d.mts", "require": "./lib/get-type.d.ts", "default": "./lib/get-type.d.ts" },
+      "types": {
+        "import": "./esm/lib/get-type.d.mts",
+        "require": "./lib/get-type.d.ts",
+        "default": "./lib/get-type.d.ts"
+      },
       "import": "./esm/lib/get-type.mjs",
       "require": "./lib/get-type.js",
       "default": "./lib/get-type.js"
     },
     "./lib/get-type.js": {
-      "types": { "import": "./esm/lib/get-type.d.mts", "require": "./lib/get-type.d.ts", "default": "./lib/get-type.d.ts" },
+      "types": {
+        "import": "./esm/lib/get-type.d.mts",
+        "require": "./lib/get-type.d.ts",
+        "default": "./lib/get-type.d.ts"
+      },
       "import": "./esm/lib/get-type.mjs",
       "require": "./lib/get-type.js",
       "default": "./lib/get-type.js"
     },
     "./lib/link-reader": {
-      "types": { "import": "./esm/lib/link-reader.d.mts", "require": "./lib/link-reader.d.ts", "default": "./lib/link-reader.d.ts" },
+      "types": {
+        "import": "./esm/lib/link-reader.d.mts",
+        "require": "./lib/link-reader.d.ts",
+        "default": "./lib/link-reader.d.ts"
+      },
       "import": "./esm/lib/link-reader.mjs",
       "require": "./lib/link-reader.js",
       "default": "./lib/link-reader.js"
     },
     "./lib/link-reader.js": {
-      "types": { "import": "./esm/lib/link-reader.d.mts", "require": "./lib/link-reader.d.ts", "default": "./lib/link-reader.d.ts" },
+      "types": {
+        "import": "./esm/lib/link-reader.d.mts",
+        "require": "./lib/link-reader.d.ts",
+        "default": "./lib/link-reader.d.ts"
+      },
       "import": "./esm/lib/link-reader.mjs",
       "require": "./lib/link-reader.js",
       "default": "./lib/link-reader.js"
     },
     "./lib/link-writer": {
-      "types": { "import": "./esm/lib/link-writer.d.mts", "require": "./lib/link-writer.d.ts", "default": "./lib/link-writer.d.ts" },
+      "types": {
+        "import": "./esm/lib/link-writer.d.mts",
+        "require": "./lib/link-writer.d.ts",
+        "default": "./lib/link-writer.d.ts"
+      },
       "import": "./esm/lib/link-writer.mjs",
       "require": "./lib/link-writer.js",
       "default": "./lib/link-writer.js"
     },
     "./lib/link-writer.js": {
-      "types": { "import": "./esm/lib/link-writer.d.mts", "require": "./lib/link-writer.d.ts", "default": "./lib/link-writer.d.ts" },
+      "types": {
+        "import": "./esm/lib/link-writer.d.mts",
+        "require": "./lib/link-writer.d.ts",
+        "default": "./lib/link-writer.d.ts"
+      },
       "import": "./esm/lib/link-writer.mjs",
       "require": "./lib/link-writer.js",
       "default": "./lib/link-writer.js"
     },
     "./lib/proxy-reader": {
-      "types": { "import": "./esm/lib/proxy-reader.d.mts", "require": "./lib/proxy-reader.d.ts", "default": "./lib/proxy-reader.d.ts" },
+      "types": {
+        "import": "./esm/lib/proxy-reader.d.mts",
+        "require": "./lib/proxy-reader.d.ts",
+        "default": "./lib/proxy-reader.d.ts"
+      },
       "import": "./esm/lib/proxy-reader.mjs",
       "require": "./lib/proxy-reader.js",
       "default": "./lib/proxy-reader.js"
     },
     "./lib/proxy-reader.js": {
-      "types": { "import": "./esm/lib/proxy-reader.d.mts", "require": "./lib/proxy-reader.d.ts", "default": "./lib/proxy-reader.d.ts" },
+      "types": {
+        "import": "./esm/lib/proxy-reader.d.mts",
+        "require": "./lib/proxy-reader.d.ts",
+        "default": "./lib/proxy-reader.d.ts"
+      },
       "import": "./esm/lib/proxy-reader.mjs",
       "require": "./lib/proxy-reader.js",
       "default": "./lib/proxy-reader.js"
     },
     "./lib/proxy-writer": {
-      "types": { "import": "./esm/lib/proxy-writer.d.mts", "require": "./lib/proxy-writer.d.ts", "default": "./lib/proxy-writer.d.ts" },
+      "types": {
+        "import": "./esm/lib/proxy-writer.d.mts",
+        "require": "./lib/proxy-writer.d.ts",
+        "default": "./lib/proxy-writer.d.ts"
+      },
       "import": "./esm/lib/proxy-writer.mjs",
       "require": "./lib/proxy-writer.js",
       "default": "./lib/proxy-writer.js"
     },
     "./lib/proxy-writer.js": {
-      "types": { "import": "./esm/lib/proxy-writer.d.mts", "require": "./lib/proxy-writer.d.ts", "default": "./lib/proxy-writer.d.ts" },
+      "types": {
+        "import": "./esm/lib/proxy-writer.d.mts",
+        "require": "./lib/proxy-writer.d.ts",
+        "default": "./lib/proxy-writer.d.ts"
+      },
       "import": "./esm/lib/proxy-writer.mjs",
       "require": "./lib/proxy-writer.js",
       "default": "./lib/proxy-writer.js"
     },
     "./lib/reader": {
-      "types": { "import": "./esm/lib/reader.d.mts", "require": "./lib/reader.d.ts", "default": "./lib/reader.d.ts" },
+      "types": {
+        "import": "./esm/lib/reader.d.mts",
+        "require": "./lib/reader.d.ts",
+        "default": "./lib/reader.d.ts"
+      },
       "import": "./esm/lib/reader.mjs",
       "require": "./lib/reader.js",
       "default": "./lib/reader.js"
     },
     "./lib/reader.js": {
-      "types": { "import": "./esm/lib/reader.d.mts", "require": "./lib/reader.d.ts", "default": "./lib/reader.d.ts" },
+      "types": {
+        "import": "./esm/lib/reader.d.mts",
+        "require": "./lib/reader.d.ts",
+        "default": "./lib/reader.d.ts"
+      },
       "import": "./esm/lib/reader.mjs",
       "require": "./lib/reader.js",
       "default": "./lib/reader.js"
     },
     "./lib/socket-reader": {
-      "types": { "import": "./esm/lib/socket-reader.d.mts", "require": "./lib/socket-reader.d.ts", "default": "./lib/socket-reader.d.ts" },
+      "types": {
+        "import": "./esm/lib/socket-reader.d.mts",
+        "require": "./lib/socket-reader.d.ts",
+        "default": "./lib/socket-reader.d.ts"
+      },
       "import": "./esm/lib/socket-reader.mjs",
       "require": "./lib/socket-reader.js",
       "default": "./lib/socket-reader.js"
     },
     "./lib/socket-reader.js": {
-      "types": { "import": "./esm/lib/socket-reader.d.mts", "require": "./lib/socket-reader.d.ts", "default": "./lib/socket-reader.d.ts" },
+      "types": {
+        "import": "./esm/lib/socket-reader.d.mts",
+        "require": "./lib/socket-reader.d.ts",
+        "default": "./lib/socket-reader.d.ts"
+      },
       "import": "./esm/lib/socket-reader.mjs",
       "require": "./lib/socket-reader.js",
       "default": "./lib/socket-reader.js"
     },
     "./lib/writer": {
-      "types": { "import": "./esm/lib/writer.d.mts", "require": "./lib/writer.d.ts", "default": "./lib/writer.d.ts" },
+      "types": {
+        "import": "./esm/lib/writer.d.mts",
+        "require": "./lib/writer.d.ts",
+        "default": "./lib/writer.d.ts"
+      },
       "import": "./esm/lib/writer.mjs",
       "require": "./lib/writer.js",
       "default": "./lib/writer.js"
     },
     "./lib/writer.js": {
-      "types": { "import": "./esm/lib/writer.d.mts", "require": "./lib/writer.d.ts", "default": "./lib/writer.d.ts" },
+      "types": {
+        "import": "./esm/lib/writer.d.mts",
+        "require": "./lib/writer.d.ts",
+        "default": "./lib/writer.d.ts"
+      },
       "import": "./esm/lib/writer.mjs",
       "require": "./lib/writer.js",
       "default": "./lib/writer.js"
@@ -289,7 +401,8 @@
     "reader",
     "writer",
     "typescript",
-    "stackline"
+    "stackline",
+    "file-stream"
   ],
   "author": "Stackline Maintainers",
   "contributors": [

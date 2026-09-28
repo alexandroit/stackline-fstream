@@ -78,7 +78,7 @@ async function verifyConsumer (tarball, alias) {
     : path.join(directory, 'node_modules', 'fstream', 'package.json')
   const installed = JSON.parse(await readFile(packagePath, 'utf8'))
   assert.equal(installed.name, '@stackline/fstream')
-  assert.equal(installed.version, '1.0.1')
+  assert.equal(installed.version, '1.0.2')
   assert.deepEqual(installed.dependencies, {
     'graceful-fs': 'npm:@stackline/graceful-fs@1.0.0'
   })
@@ -110,7 +110,7 @@ try {
   ], root)
   const details = JSON.parse(pack.stdout.trim())[0]
   assert.equal(details.name, '@stackline/fstream')
-  assert.equal(details.version, '1.0.1')
+  assert.equal(details.version, '1.0.2')
   const tarball = path.join(temporary, details.filename)
 
   await verifyConsumer(tarball, false)

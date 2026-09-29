@@ -4,13 +4,13 @@
 
 [![npm version](https://img.shields.io/npm/v/@stackline/fstream.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/fstream)
 [![license](https://img.shields.io/npm/l/@stackline/fstream.svg?style=flat-square)](https://github.com/alexandroit/stackline-fstream)
-[![GitHub repository](https://img.shields.io/badge/GitHub-alexandroit%2Fstackline-fstream-181717?style=flat-square&logo=github)](https://github.com/alexandroit/stackline-fstream)
+[![GitHub repository](https://img.shields.io/badge/GitHub-repository-181717?style=flat-square&logo=github)](https://github.com/alexandroit/stackline-fstream)
 [![Docs](https://img.shields.io/badge/docs-alexandro.net-0f766e?style=flat-square)](https://alexandro.net/docs/vanilla/fstream/)
 [![Reddit community](https://img.shields.io/badge/community-r%2FStackline-ff4500?style=flat-square&logo=reddit&logoColor=white)](https://www.reddit.com/r/Stackline/)
 
 **[Documentation](https://alexandro.net/docs/vanilla/fstream/)** | **[npm](https://www.npmjs.com/package/@stackline/fstream)** | **[Issues](https://github.com/alexandroit/stackline-fstream/issues)** | **[Repository](https://github.com/alexandroit/stackline-fstream)**
 
-**Current package version:** `1.0.3`
+**Current package version:** `1.0.4`
 
 ---
 
@@ -28,7 +28,7 @@ Z. Schlueter, the npm organization, or the upstream project.
 
 | Item | Value |
 | --- | --- |
-| Package | `@stackline/fstream@1.0.3` |
+| Package | `@stackline/fstream@1.0.4` |
 | Node.js runtime | `>=14.15.1` |
 | CommonJS / primary entry | `./fstream.js` |
 | ES module entry | `./index.mjs` |

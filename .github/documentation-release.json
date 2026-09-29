@@ -4,7 +4,7 @@
     {
       "name": "@stackline/fstream",
       "path": "README.md",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "baselineVersion": "1.0.2",
       "keywords": [
         "stackline",
@@ -22,8 +22,8 @@
       "homepage": "https://alexandro.net/docs/vanilla/fstream/",
       "baselineTarball": "https://registry.npmjs.org/@stackline/fstream/-/fstream-1.0.2.tgz",
       "baselineIntegrity": "sha512-5Qzt2BAlS4N/nHrajJLRh3hbl5O3GS90uc8+enND6AWNHQUZr+edyrOWFo0Cuxfic6/x/i5D24WtHK6pDTsysA==",
-      "expectedSha512": "8557b35c1200c0a0f9bad27784e86fd660932857669451e6706a2fdcee2a223872fb50cd26ff93317df3e5897afe0678ef998ebd67c6b81966b2a8a1e6fb34fe",
-      "tag": "docs-stackline-fstream-v1.0.3"
+      "expectedSha512": "12a4366ca3086a2efe2d42fc4241de526ee7dbaea4a5ba558a2104db0ae40553734ec3532ede521b9dedceba956bcc53d7b593ae7a1f5a0c7a2692cc05e218a4",
+      "tag": "docs-stackline-fstream-v1.0.4"
     }
   ]
 }

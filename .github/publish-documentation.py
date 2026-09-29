@@ -52,7 +52,7 @@ for p in PLAN['packages']:
   assert existing['immutable'] and not existing['draft']
   asset=next(a for a in existing['assets'] if a['name']==archive.name);assert asset['digest']=='sha256:'+hashlib.sha256(raw).hexdigest()
   print(json.dumps({'package':p['name'],'version':p['version'],'release':existing['html_url'],'status':'PASS_EXISTING'}),flush=True);continue
- notes=f"Documentation and package discovery update for `{p['name']}@{p['version']}`.\n\nUses the published `{p['baselineVersion']}` tarball as the baseline. Only the README and package version, keywords and homepage changed. All other {evidence['unchangedFiles']} file contents are identical; runtime/development dependencies, original authors and license are preserved.\n\n[Documentation]({p['homepage']}) · [Publication evidence]({invocation})\n\nSHA-512: `{p['expectedSha512']}`"
+ notes=f"Documentation and package discovery update for `{p['name']}@{p['version']}`.\n\nUses the published `{p['baselineVersion']}` tarball as the baseline. Only the README and package documentation/discovery metadata changed. All other {evidence['unchangedFiles']} file contents are identical; runtime/development dependencies, original authors and license are preserved.\n\n[Documentation]({p['homepage']}) · [Publication evidence]({invocation})\n\nSHA-512: `{p['expectedSha512']}`"
  release=gh('releases','POST',{'tag_name':p['tag'],'name':p['name']+' '+p['version'],'body':notes,'draft':True})
  subprocess.run(['gh','release','upload',p['tag'],str(archive),str(evidencefile),'--repo',REPO],check=True)
  release=gh('releases/'+str(release['id']),'PATCH',{'draft':False,'make_latest':'true'});assert release.get('immutable') is True

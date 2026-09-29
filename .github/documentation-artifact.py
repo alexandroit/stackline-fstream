@@ -1,7 +1,7 @@
 """Documentation-only release: retain every published runtime byte and metadata contract."""
 from pathlib import Path
 import base64,gzip,hashlib,io,json,re,tarfile,urllib.request
-ALLOWED={'version','keywords','homepage'}
+ALLOWED={'version','keywords','homepage','readme','readmeFilename'}
 def build(p,readme,baseline,out):
  assert p['name']!='@stackline/xlsx'
  assert 'sha512-'+base64.b64encode(hashlib.sha512(baseline).digest()).decode()==p['baselineIntegrity']
@@ -10,6 +10,7 @@ def build(p,readme,baseline,out):
   data={m.name:t.extractfile(m).read() for m in members if m.isfile()}
   old=json.loads(data['package/package.json']);assert old['name']==p['name'] and old['version']==p['baselineVersion']
   updated=dict(old);updated.update(version=p['version'],keywords=p['keywords'],homepage=p['homepage'])
+  if p.get('explicitReadme'):updated.update(readme=readme.decode(),readmeFilename='README.md')
   assert {k:v for k,v in old.items() if k not in ALLOWED}=={k:v for k,v in updated.items() if k not in ALLOWED}
   changed={'package/package.json'};newdata=dict(data);newdata['package/package.json']=(json.dumps(updated,indent=2,ensure_ascii=False)+'\n').encode()
   for m in members:

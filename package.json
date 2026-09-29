@@ -1,6 +1,6 @@
 {
   "name": "@stackline/fstream",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Compatibility-first filesystem object streams with maintained packaging and first-party types",
   "type": "commonjs",
   "main": "./fstream.js",

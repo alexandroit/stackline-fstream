@@ -1,0 +1,29 @@
+{
+  "repository": "alexandroit/stackline-fstream",
+  "packages": [
+    {
+      "name": "@stackline/fstream",
+      "path": "README.md",
+      "version": "1.0.3",
+      "baselineVersion": "1.0.2",
+      "keywords": [
+        "stackline",
+        "npm-package",
+        "fstream",
+        "streams",
+        "typescript",
+        "nodejs",
+        "filesystem",
+        "stream",
+        "reader",
+        "writer",
+        "file-stream"
+      ],
+      "homepage": "https://alexandro.net/docs/vanilla/fstream/",
+      "baselineTarball": "https://registry.npmjs.org/@stackline/fstream/-/fstream-1.0.2.tgz",
+      "baselineIntegrity": "sha512-5Qzt2BAlS4N/nHrajJLRh3hbl5O3GS90uc8+enND6AWNHQUZr+edyrOWFo0Cuxfic6/x/i5D24WtHK6pDTsysA==",
+      "expectedSha512": "8557b35c1200c0a0f9bad27784e86fd660932857669451e6706a2fdcee2a223872fb50cd26ff93317df3e5897afe0678ef998ebd67c6b81966b2a8a1e6fb34fe",
+      "tag": "docs-stackline-fstream-v1.0.3"
+    }
+  ]
+}

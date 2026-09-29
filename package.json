@@ -1,6 +1,6 @@
 {
   "name": "@stackline/fstream",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Compatibility-first filesystem object streams with maintained packaging and first-party types",
   "type": "commonjs",
   "main": "./fstream.js",
@@ -395,13 +395,16 @@
     "url": "https://github.com/alexandroit/stackline-fstream/issues"
   },
   "keywords": [
-    "filesystem",
+    "stackline",
+    "npm-package",
     "fstream",
+    "streams",
+    "typescript",
+    "nodejs",
+    "filesystem",
     "stream",
     "reader",
     "writer",
-    "typescript",
-    "stackline",
     "file-stream"
   ],
   "author": "Stackline Maintainers",

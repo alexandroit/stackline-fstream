@@ -1,17 +1,18 @@
 # @stackline/fstream
 
-> Compatibility-first filesystem object streams with maintained packaging and first-party types
+> Compatibility-first filesystem object streams with maintained packaging and first-party types.
 
 [![npm version](https://img.shields.io/npm/v/@stackline/fstream.svg?style=flat-square)](https://www.npmjs.com/package/@stackline/fstream)
-[![license](https://img.shields.io/npm/l/@stackline/fstream.svg?style=flat-square)](https://github.com/alexandroit/stackline-fstream/blob/main/LICENSE)
-[![GitHub repository](https://img.shields.io/badge/GitHub-Repository-181717?style=flat-square&logo=github)](https://github.com/alexandroit/stackline-fstream)
+[![license](https://img.shields.io/npm/l/@stackline/fstream.svg?style=flat-square)](https://github.com/alexandroit/stackline-fstream)
+[![GitHub repository](https://img.shields.io/badge/GitHub-alexandroit%2Fstackline-fstream-181717?style=flat-square&logo=github)](https://github.com/alexandroit/stackline-fstream)
+[![Docs](https://img.shields.io/badge/docs-alexandro.net-0f766e?style=flat-square)](https://alexandro.net/docs/vanilla/fstream/)
+[![Reddit community](https://img.shields.io/badge/community-r%2FStackline-ff4500?style=flat-square&logo=reddit&logoColor=white)](https://www.reddit.com/r/Stackline/)
 
-**[Documentation](https://alexandro.net/docs/vanilla/fstream/)** |
-**[npm](https://www.npmjs.com/package/@stackline/fstream)** |
-**[Issues](https://github.com/alexandroit/stackline-fstream/issues)** |
-**[Repository](https://github.com/alexandroit/stackline-fstream)**
+**[Documentation](https://alexandro.net/docs/vanilla/fstream/)** | **[npm](https://www.npmjs.com/package/@stackline/fstream)** | **[Issues](https://github.com/alexandroit/stackline-fstream/issues)** | **[Repository](https://github.com/alexandroit/stackline-fstream)**
 
-**Package version:** `1.0.2`
+**Current package version:** `1.0.3`
+
+---
 
 ## Why this package?
 
@@ -27,7 +28,7 @@ Z. Schlueter, the npm organization, or the upstream project.
 
 | Item | Value |
 | --- | --- |
-| Package | `@stackline/fstream@1.0.2` |
+| Package | `@stackline/fstream@1.0.3` |
 | Node.js runtime | `>=14.15.1` |
 | CommonJS / primary entry | `./fstream.js` |
 | ES module entry | `./index.mjs` |
@@ -242,16 +243,25 @@ npm run test:smoke
 
 Run `npm run verify` and inspect the package contents before release. Publish a new version through the [GitHub Actions publishing workflow](https://github.com/alexandroit/stackline-fstream/actions/workflows/publish.yml), using the SHA-512 digest of the reviewed tarball. Verify the exact published version, tarball integrity, and npm provenance after the run.
 
-## Community and Support
-
-Report reproducible package issues in the [issue tracker](https://github.com/alexandroit/stackline-fstream/issues). Use the [security policy](https://github.com/alexandroit/stackline-fstream/blob/main/SECURITY.md) for vulnerability reports.
-
-- [Stackline / Alexandro.Net](https://alexandro.net/)
-- [GitHub](https://github.com/alexandroit)
-- [Maintainer LinkedIn](https://www.linkedin.com/in/aleinfo/)
-- [Reddit community: r/Stackline](https://www.reddit.com/r/Stackline/)
-
 ## License
 
 ISC. Upstream copyright and attribution are retained in [LICENSE](https://github.com/alexandroit/stackline-fstream/blob/main/LICENSE),
 [NOTICE](https://github.com/alexandroit/stackline-fstream/blob/main/NOTICE), and [THIRD_PARTY_LICENSES.md](https://github.com/alexandroit/stackline-fstream/blob/main/THIRD_PARTY_LICENSES.md).
+
+## Credits and original authors
+
+- Stackline Maintainers.
+- Isaac Z. Schlueter and fstream contributors.
+- Stackline maintenance: [Alexandro Paixao Marques](https://www.linkedin.com/in/aleinfo/) and [Stackline contributors](https://github.com/alexandroit).
+
+Original copyright, license notices and contributor acknowledgements remain part of this distribution. Stackline maintenance does not replace authorship of the original work.
+
+## Community and Links
+
+- [Stackline website](https://alexandro.net/)
+- [GitHub projects](https://github.com/alexandroit)
+- [npm packages](https://www.npmjs.com/~alex360qc)
+- [Reddit community — r/Stackline](https://www.reddit.com/r/Stackline/)
+- [Maintainer LinkedIn](https://www.linkedin.com/in/aleinfo/)
+
+Use this repository's issue tracker for reproducible bugs and feature requests. Join r/Stackline for examples, usage questions and release discussions.

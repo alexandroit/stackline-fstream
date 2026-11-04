@@ -6,6 +6,8 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const root = fileURLToPath(new URL('../', import.meta.url))
+const packageJson = JSON.parse(await readFile(path.join(root, 'package.json'), 'utf8'))
+const gracefulVersion = packageJson.dependencies['graceful-fs'].split('@').pop()
 const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm'
 const temporary = await mkdtemp(path.join(os.tmpdir(), 'stackline-fstream-smoke-'))
 const consumer = path.join(temporary, 'consumer')
@@ -143,14 +145,12 @@ fstream.collect(reader)
   const installed = JSON.parse(await readFile(path.join(
     consumer, 'node_modules', '@stackline', 'fstream', 'package.json'
   ), 'utf8'))
-  assert.deepEqual(installed.dependencies, {
-    'graceful-fs': 'npm:@stackline/graceful-fs@1.0.0'
-  })
+  assert.deepEqual(installed.dependencies, packageJson.dependencies)
   const graceful = JSON.parse(await readFile(path.join(
     consumer, 'node_modules', 'graceful-fs', 'package.json'
   ), 'utf8'))
   assert.equal(graceful.name, '@stackline/graceful-fs')
-  assert.equal(graceful.version, '1.0.0')
+  assert.equal(graceful.version, gracefulVersion)
   const tree = JSON.parse(run(npm, [
     'ls', '--omit=dev', '--all', '--json'
   ], { cwd: consumer }))

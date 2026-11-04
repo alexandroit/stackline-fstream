@@ -6,6 +6,8 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const root = fileURLToPath(new URL('../', import.meta.url))
+const packageJson = JSON.parse(await readFile(path.join(root, 'package.json'), 'utf8'))
+const gracefulVersion = packageJson.dependencies['graceful-fs'].split('@').pop()
 const inheritedNpmCli = process.env.npm_execpath
 const useInheritedNpmCli = inheritedNpmCli && /npm-cli\.js$/iu.test(inheritedNpmCli)
 const npmCommand = useInheritedNpmCli
@@ -78,17 +80,15 @@ async function verifyConsumer (tarball, alias) {
     : path.join(directory, 'node_modules', 'fstream', 'package.json')
   const installed = JSON.parse(await readFile(packagePath, 'utf8'))
   assert.equal(installed.name, '@stackline/fstream')
-  assert.equal(installed.version, '1.0.2')
-  assert.deepEqual(installed.dependencies, {
-    'graceful-fs': 'npm:@stackline/graceful-fs@1.0.0'
-  })
+  assert.equal(installed.version, packageJson.version)
+  assert.deepEqual(installed.dependencies, packageJson.dependencies)
 
   const graceful = JSON.parse(await readFile(
     path.join(directory, 'node_modules', 'graceful-fs', 'package.json'),
     'utf8'
   ))
   assert.equal(graceful.name, '@stackline/graceful-fs')
-  assert.equal(graceful.version, '1.0.0')
+  assert.equal(graceful.version, gracefulVersion)
   assert.deepEqual(graceful.dependencies || {}, {})
 
   const smoke = spawnSync(process.execPath, ['-e', `
@@ -110,7 +110,7 @@ try {
   ], root)
   const details = JSON.parse(pack.stdout.trim())[0]
   assert.equal(details.name, '@stackline/fstream')
-  assert.equal(details.version, '1.0.2')
+  assert.equal(details.version, packageJson.version)
   const tarball = path.join(temporary, details.filename)
 
   await verifyConsumer(tarball, false)

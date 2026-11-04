@@ -10,7 +10,7 @@
 
 **[Documentation](https://alexandro.net/docs/vanilla/fstream/)** | **[npm](https://www.npmjs.com/package/@stackline/fstream)** | **[Issues](https://github.com/alexandroit/stackline-fstream/issues)** | **[Repository](https://github.com/alexandroit/stackline-fstream)**
 
-**Current package version:** `1.0.5`
+**Current package version:** `1.0.6`
 
 ---
 
@@ -28,7 +28,7 @@ Z. Schlueter, the npm organization, or the upstream project.
 
 | Item | Value |
 | --- | --- |
-| Package | `@stackline/fstream@1.0.5` |
+| Package | `@stackline/fstream@1.0.6` |
 | Node.js runtime | `>=14.15.1` |
 | CommonJS / primary entry | `./fstream.js` |
 | ES module entry | `./index.mjs` |
@@ -229,7 +229,7 @@ npm ci
 npm run verify
 ```
 
-Release tooling uses Node.js 24.20.0 and npm 11.19.0. The consumer runtime contract remains the one documented above.
+Release tooling uses Node.js 24.22.2 and npm 11.19.0. The consumer runtime contract remains the one documented above.
 
 ## Consumer Smoke Test
 

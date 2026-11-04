@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
-          node-version: 24.20.0
+          node-version: 24.22.2
           cache: npm
       - run: npm install --global npm@11.19.0
       - run: npm --version
@@ -39,7 +39,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
-          node-version: 24.20.0
+          node-version: 24.22.2
           cache: npm
       - run: npm install --global npm@11.19.0
       - run: npm --version
@@ -63,9 +63,11 @@ jobs:
       - name: Verify the production SBOM dependency edge
         run: >-
           node -e "const s=require('./artifact/sbom.cdx.json');
+          const p=require('./package.json');
+          const v=p.dependencies['graceful-fs'].split('@').pop();
           const c=[s.metadata.component,...s.components];
-          const r=c.find(x=>x['bom-ref']==='@stackline/fstream@1.0.2');
-          const g=c.find(x=>x['bom-ref']==='@stackline/graceful-fs@1.0.0');
+          const r=c.find(x=>x['bom-ref']===p.name+'@'+p.version);
+          const g=c.find(x=>x['bom-ref']==='@stackline/graceful-fs@'+v);
           const e=s.dependencies.find(x=>r&&x.ref===r['bom-ref']);
           if(!r||!g||!e||!e.dependsOn.includes(g['bom-ref']))process.exit(1)"
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
@@ -112,7 +114,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node: [16.20.2, 18.20.8, 20.20.0, 22, 24]
+        node: [16.20.2, 18.20.8, 20.20.2, 22.23.4, 24.22.2]
     steps:
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
@@ -142,7 +144,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
-          node-version: 24.20.0
+          node-version: 24.22.2
           cache: npm
       - run: npm install --global npm@11.19.0
       - run: npm ci

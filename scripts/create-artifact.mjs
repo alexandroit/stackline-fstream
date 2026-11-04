@@ -67,6 +67,7 @@ execFileSync(npm, ['run', 'verify'], {
 assert.equal(command('git', ['status', '--porcelain', '--untracked-files=normal']), '',
   'release source must be committed and the worktree must be clean')
 const packageJson = JSON.parse(await readFile(path.join(root, 'package.json'), 'utf8'))
+const gracefulVersion = packageJson.dependencies['graceful-fs'].split('@').pop()
 const expectedTag = `stackline-v${packageJson.version}`
 const tagsAtHead = command('git', ['tag', '--points-at', 'HEAD']).split('\n')
 assert(tagsAtHead.includes(expectedTag),
@@ -137,7 +138,7 @@ try {
   const licenses = {
     package: { name: '@stackline/fstream', license: 'ISC', file: 'LICENSE' },
     productionDependencies: [
-      { name: '@stackline/graceful-fs', version: '1.0.0', license: 'ISC' }
+      { name: '@stackline/graceful-fs', version: gracefulVersion, license: 'ISC' }
     ],
     notices: ['NOTICE', 'THIRD_PARTY_LICENSES.md']
   }
@@ -170,11 +171,11 @@ try {
   // npm 10 reports an aliased component under the dependency key while npm 11
   // reports the published package name. CycloneDX bom-ref is stable in both.
   const rootComponent = components.find((component) =>
-    component['bom-ref'] === '@stackline/fstream@1.0.2')
+    component['bom-ref'] === `${packageJson.name}@${packageJson.version}`)
   const gracefulComponent = components.find((component) =>
-    component['bom-ref'] === '@stackline/graceful-fs@1.0.0')
-  assert(rootComponent, 'SBOM must contain @stackline/fstream@1.0.2')
-  assert(gracefulComponent, 'SBOM must contain @stackline/graceful-fs@1.0.0')
+    component['bom-ref'] === `@stackline/graceful-fs@${gracefulVersion}`)
+  assert(rootComponent, `SBOM must contain ${packageJson.name}@${packageJson.version}`)
+  assert(gracefulComponent, `SBOM must contain @stackline/graceful-fs@${gracefulVersion}`)
   const rootEdge = (parsedSbom.dependencies || []).find(({ ref }) =>
     ref === rootComponent['bom-ref'])
   assert(rootEdge && rootEdge.dependsOn.includes(gracefulComponent['bom-ref']),

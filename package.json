@@ -419,7 +419,7 @@
     "access": "public"
   },
   "dependencies": {
-    "graceful-fs": "npm:@stackline/graceful-fs@1.0.3"
+    "graceful-fs": "npm:@stackline/graceful-fs@1.0.4"
   },
   "peerDependencies": {
     "@types/node": ">=14.18.0"
